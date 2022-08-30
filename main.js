@@ -30,7 +30,7 @@ const getTimeRemaining = () => {
   const dayOfWeek = date.toLocaleDateString('ru-Ru', { weekday: 'long' });
 
   let dateStop = new Date(deadline).getTime();
-  let dateNow = new Date().getTime();
+  let dateNow = date.getTime();
   let timeRemaining = (dateStop - dateNow) / 1000;
 
   let days = Math.floor(timeRemaining / 60 / 60 / 24);
@@ -50,11 +50,6 @@ const updateClock = () => {
   day.textContent = `Сегодня: ${getTime.dayOfWeek}`;
   time.textContent = `Текущее время: ${getTime.time}`;
   left.textContent = `До нового года осталось ${getTime.days} дней`;
-
-  if (getTime.timeRemaining < 0) {
-    clearInterval(interval);
-    day.textContent = `До нового года осталось 0 дней`;
-  }
 };
 
 updateClock();
