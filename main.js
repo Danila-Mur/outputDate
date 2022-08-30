@@ -4,23 +4,9 @@ const welcome = document.querySelector('.welcome'),
   left = document.querySelector('.left');
 let interval;
 
-const getDayWeek = (date) => {
-  const days = [
-    'Воскресенье',
-    'Понедельник',
-    'Вторник',
-    'Среда',
-    'Четверг',
-    'Пятница',
-    'Суббота',
-  ];
-
-  return days[date.getDay()];
-};
-
 const getTimeRemaining = () => {
-  const deadline = '1 january 2023';
   let date = new Date();
+  const deadline = new Date(date.getFullYear() + 1, 0, 1);
 
   const hours = date.getHours();
 
@@ -41,7 +27,7 @@ const getTimeRemaining = () => {
   }
 
   const time = date.toLocaleTimeString('en');
-  const dayOfWeek = getDayWeek(date);
+  const dayOfWeek = date.toLocaleDateString('ru-Ru', { weekday: 'long' });
 
   let dateStop = new Date(deadline).getTime();
   let dateNow = new Date().getTime();
